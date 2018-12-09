@@ -34,9 +34,9 @@ public class HeapSort {
 
         int level = (int)Math.ceil(Math.log(n-m+1)/Math.log(2));  //计算树的深度 1 2  3 ...
 
-        for(int i=level-1; i > 0 && level > 0; i--){    //逐层循环处理 从倒数第二层开始处理4 3 .. 1
-            for(int j=(int)Math.pow(2, i-1); j>0; j--){ //从每层最后一个参数开始处理
-                int currIndex = (int)Math.pow(2, i-1) - 1 + j;
+        for(int i=level-1; i > 0 && level > 0; i--){    //逐层循环处理 从倒数第i-1层开始处理4 3 .. 1
+            for(int j=(int)Math.pow(2, i-1); j>0; j--){ //从该层最后一个参数开始处理 处理到第一个
+                int currIndex = i==1? 0: (int)Math.pow(2, i-2) - 1 + j;
                 //与其子节点进行比较
                 int right = 2*currIndex+2;  //右子节点
                 if(right < n && a[currIndex] < a[right]){
